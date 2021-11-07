@@ -1,0 +1,15 @@
+div {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  height: 36px;
+  width: 36px;
+}
+
+img {
+  display: block;
+  width: 500px;
+  margin: auto;
+}
