@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Andreoid OS</title>
+    <description>Andrewoid OS AOSP Custom project - Blog</description>
+    <link>https://andrewoidos.ml</link>
+    
+        <item>
+            <title>Changelog 25 - Exemplary Eleven, Ravishing Recorder, Captivating Calendar, Beaming Backup</title>
+            <description> Ohai there, it's been a while</description>
+            <pubDate>2021-04-01T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/Changelog-25/</link>
+            <guid isPermaLink="true">https://lineageos.org/Changelog-25/</guid>
+        </item>
+    
+    
+        <item>
+            <title>Update &amp; Build Prep</title>
+            <description> All systems operational</description>
+            <pubDate>2017-01-20T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/Update-and-Build-Prep/</link>
+            <guid isPermaLink="true">https://lineageos.org/Update-and-Build-Prep/</guid>
+        </item>
+    
+        <item>
+            <title>Infrastructure Status &amp; Official Builds</title>
+            <description> Build slaves, mirrors, and builds</description>
+            <pubDate>2016-12-28T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/Infrastructure-Status-and-Official-Builds/</link>
+            <guid isPermaLink="true">https://lineageos.org/Infrastructure-Status-and-Official-Builds/</guid>
+        </item>
+    
+        <item>
+            <title>Yes, this is us.</title>
+            <description> We aren't going anywhere.</description>
+            <pubDate>2016-12-24T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/Yes-this-is-us/</link>
+            <guid isPermaLink="true">https://lineageos.org/Yes-this-is-us/</guid>
+        </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LineageOS Engineering Blog</title>
+    <description>Technical blog posts on Android internals</description>
+    <link>https://lineageos.org</link>
+    
+        <item>
+            <title>Working with SELinux on Android</title>
+            <description> Understanding the basics of SELinux</description>
+            <pubDate>2021-02-25T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/engineering/HowTo-SELinux/</link>
+            <guid isPermaLink="true">https://lineageos.org/engineering/HowTo-SELinux/</guid>
+        </item>
+    
+        <item>
+            <title>Bluetooth SBC Dual Channel HD audio mode</title>
+            <description> Deep dive into the &quot;HD Audio: SBC&quot; checkbox</description>
+            <pubDate>2019-07-06T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/engineering/Bluetooth-SBC-XQ/</link>
+            <guid isPermaLink="true">https://lineageos.org/engineering/Bluetooth-SBC-XQ/</guid>
+        </item>
+    
+        <item>
+            <title>Qualcomm’s Chain of Trust</title>
+            <description> Covering Qualcomm bootloader’s up to the point of Android being loaded</description>
+            <pubDate>2018-09-17T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/engineering/Qualcomm-Firmware/</link>
+            <guid isPermaLink="true">https://lineageos.org/engineering/Qualcomm-Firmware/</guid>
+        </item>
+    
+        <item>
+            <title>Android Telephony Basics</title>
+            <description> Understanding Android Telephony</description>
+            <pubDate>2018-06-18T00:00:00+00:00</pubDate>
+            <link>https://lineageos.org/engineering/Telephony/</link>
+            <guid isPermaLink="true">https://lineageos.org/engineering/Telephony/</guid>
+        </item>
+    
+  </channel>
+</rss>

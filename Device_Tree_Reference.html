@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Device Tree Reference - eLinux.org</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Device_Tree_Reference","wgTitle":"Device Tree Reference","wgCurRevisionId":556281,"wgRevisionId":556281,"wgArticleId":101006,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Device tree"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Device_Tree_Reference","wgRelevantArticleId":101006,"wgRequestId":"b3785a7de79c653a2ddcf135","wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":[]});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","site":"ready","user.options":"ready","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready"});mw.loader.implement("user.tokens@07u5903",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});mw.loader.load(["mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.toc","mediawiki.searchSuggest","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.31.0"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="eLinux.org (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="https://elinux.org/api.php?action=rsd"/>
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="alternate" type="application/atom+xml" title="eLinux.org Atom feed" href="/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<!--[if lt IE 9]><script src="/load.php?debug=false&amp;lang=en&amp;modules=html5shiv&amp;only=scripts&amp;skin=vector&amp;sync=1"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Device_Tree_Reference rootpage-Device_Tree_Reference skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="siteNotice" class="mw-body-content"><script>document.write("\u003Cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cdiv class=\"mw-parser-output\"\u003E\u003Cp\u003E\u003Cbr /\u003E\n\u003C/p\u003E\u003Cp\u003E\u003Cbr /\u003E\n\u003C/p\u003E\u003C/div\u003E\u003C/div\u003E");</script></div><div class="mw-indicators mw-body-content">
+</div>
+<h1 id="firstHeading" class="firstHeading" lang="en">Device Tree Reference</h1>			<div id="bodyContent" class="mw-body-content">
+				<div id="siteSub" class="noprint">From eLinux.org</div>				<div id="contentSub"></div>
+								<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><p><br />
+</p>
+<div id="toc" class="toc"><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Device_Tree_Usage"><span class="tocnumber">2</span> <span class="toctext">Device Tree Usage</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#What_Is_Device_Tree"><span class="tocnumber">3</span> <span class="toctext">What Is Device Tree</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Request_for_Documentation_Suggestions"><span class="tocnumber">4</span> <span class="toctext">Request for Documentation Suggestions</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#History"><span class="tocnumber">5</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Future"><span class="tocnumber">6</span> <span class="toctext">Future</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Device_Tree_Related_Communications"><span class="tocnumber">7</span> <span class="toctext">Device Tree Related Communications</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Device-Tree_irc"><span class="tocnumber">7.1</span> <span class="toctext">Device-Tree irc</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Device-tree_Mailing_List"><span class="tocnumber">7.2</span> <span class="toctext">Device-tree Mailing List</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Core_devicetree_binding_.2F_Devicetree_Specification_Mailing_List"><span class="tocnumber">7.3</span> <span class="toctext">Core devicetree binding / Devicetree Specification Mailing List</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Device-tree_Compiler_and_Tools_Mailing_List"><span class="tocnumber">7.4</span> <span class="toctext">Device-tree Compiler and Tools Mailing List</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Presentations.2C_Papers.2C_and_Articles"><span class="tocnumber">8</span> <span class="toctext">Presentations, Papers, and Articles</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Device_Tree_Mysteries"><span class="tocnumber">9</span> <span class="toctext">Device Tree Mysteries</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Linux_Specific"><span class="tocnumber">10</span> <span class="toctext">Linux Specific</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Standards"><span class="tocnumber">11</span> <span class="toctext">Standards</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#Device_Tree_Source_Format"><span class="tocnumber">12</span> <span class="toctext">Device Tree Source Format</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Bindings"><span class="tocnumber">13</span> <span class="toctext">Bindings</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Bindings_Documentation_in_Linux_Kernel_Source_Tree"><span class="tocnumber">14</span> <span class="toctext">Bindings Documentation in Linux Kernel Source Tree</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#Other_Documentation_in_Linux_Kernel_Source_Tree"><span class="tocnumber">15</span> <span class="toctext">Other Documentation in Linux Kernel Source Tree</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="#Subsystem_specific"><span class="tocnumber">16</span> <span class="toctext">Subsystem specific</span></a></li>
+<li class="toclevel-1 tocsection-21"><a href="#Overlays"><span class="tocnumber">17</span> <span class="toctext">Overlays</span></a>
+<ul>
+<li class="toclevel-2 tocsection-22"><a href="#Mainline_Linux_Support"><span class="tocnumber">17.1</span> <span class="toctext">Mainline Linux Support</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="#Boot_Loader_Support"><span class="tocnumber">17.2</span> <span class="toctext">Boot Loader Support</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="#Overlay_Source_Format"><span class="tocnumber">17.3</span> <span class="toctext">Overlay Source Format</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-25"><a href="#Device_Tree_Source_Validation"><span class="tocnumber">18</span> <span class="toctext">Device Tree Source Validation</span></a></li>
+<li class="toclevel-1 tocsection-26"><a href="#Compiling_source_into_.dtb_.28FDT_binary_blob.29"><span class="tocnumber">19</span> <span class="toctext">Compiling source into .dtb (FDT binary blob)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-27"><a href="#via_Linux_kernel_make_system"><span class="tocnumber">19.1</span> <span class="toctext">via Linux kernel make system</span></a>
+<ul>
+<li class="toclevel-3 tocsection-28"><a href="#All_configured_.dtb"><span class="tocnumber">19.1.1</span> <span class="toctext">All configured .dtb</span></a></li>
+<li class="toclevel-3 tocsection-29"><a href="#A_specific_.dtb"><span class="tocnumber">19.1.2</span> <span class="toctext">A specific .dtb</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-30"><a href="#via_generated_script_in_build_directory"><span class="tocnumber">19.2</span> <span class="toctext">via generated script in build directory</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-31"><a href="#FDT_format"><span class="tocnumber">20</span> <span class="toctext">FDT format</span></a></li>
+<li class="toclevel-1 tocsection-32"><a href="#Install"><span class="tocnumber">21</span> <span class="toctext">Install</span></a></li>
+<li class="toclevel-1 tocsection-33"><a href="#Boot_loaders"><span class="tocnumber">22</span> <span class="toctext">Boot loaders</span></a></li>
+<li class="toclevel-1 tocsection-34"><a href="#Booting"><span class="tocnumber">23</span> <span class="toctext">Booting</span></a></li>
+<li class="toclevel-1 tocsection-35"><a href="#Debugging"><span class="tocnumber">24</span> <span class="toctext">Debugging</span></a></li>
+<li class="toclevel-1 tocsection-36"><a href="#Debugging_-_random_hints"><span class="tocnumber">25</span> <span class="toctext">Debugging - random hints</span></a></li>
+<li class="toclevel-1 tocsection-37"><a href="#Tools_in_Linux_kernel_source_tree"><span class="tocnumber">26</span> <span class="toctext">Tools in Linux kernel source tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-38"><a href="#dtc_.28in_kernel.29"><span class="tocnumber">26.1</span> <span class="toctext">dtc (in kernel)</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href="#dtx_diff"><span class="tocnumber">26.2</span> <span class="toctext">dtx_diff</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="#dt_to_config"><span class="tocnumber">26.3</span> <span class="toctext">dt_to_config</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-41"><a href="#Tools_external_to_Linux_kernel_source_tree"><span class="tocnumber">27</span> <span class="toctext">Tools external to Linux kernel source tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-42"><a href="#dtc_.28upstream_project.29"><span class="tocnumber">27.1</span> <span class="toctext">dtc (upstream project)</span></a></li>
+<li class="toclevel-2 tocsection-43"><a href="#dts-mode"><span class="tocnumber">27.2</span> <span class="toctext">dts-mode</span></a></li>
+<li class="toclevel-2 tocsection-44"><a href="#EDK"><span class="tocnumber">27.3</span> <span class="toctext">EDK</span></a></li>
+<li class="toclevel-2 tocsection-45"><a href="#fdtdump"><span class="tocnumber">27.4</span> <span class="toctext">fdtdump</span></a></li>
+<li class="toclevel-2 tocsection-46"><a href="#fdtoverlay"><span class="tocnumber">27.5</span> <span class="toctext">fdtoverlay</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-47"><a href="#Validation"><span class="tocnumber">28</span> <span class="toctext">Validation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-48"><a href="#in_kernel_documentation"><span class="tocnumber">28.1</span> <span class="toctext">in kernel documentation</span></a></li>
+<li class="toclevel-2 tocsection-49"><a href="#validation_tools_project"><span class="tocnumber">28.2</span> <span class="toctext">validation tools project</span></a></li>
+<li class="toclevel-2 tocsection-50"><a href="#presentations"><span class="tocnumber">28.3</span> <span class="toctext">presentations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-51"><a href="#Testing"><span class="tocnumber">29</span> <span class="toctext">Testing</span></a>
+<ul>
+<li class="toclevel-2 tocsection-52"><a href="#linux_kernel_framework"><span class="tocnumber">29.1</span> <span class="toctext">linux kernel framework</span></a></li>
+<li class="toclevel-2 tocsection-53"><a href="#dtc"><span class="tocnumber">29.2</span> <span class="toctext">dtc</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-54"><a href="#Other_projects_using_Device_Tree"><span class="tocnumber">30</span> <span class="toctext">Other projects using Device Tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-55"><a href="#barebox"><span class="tocnumber">30.1</span> <span class="toctext">barebox</span></a></li>
+<li class="toclevel-2 tocsection-56"><a href="#BSD"><span class="tocnumber">30.2</span> <span class="toctext">BSD</span></a></li>
+<li class="toclevel-2 tocsection-57"><a href="#U-Boot"><span class="tocnumber">30.3</span> <span class="toctext">U-Boot</span></a></li>
+<li class="toclevel-2 tocsection-58"><a href="#Zephyr"><span class="tocnumber">30.4</span> <span class="toctext">Zephyr</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-59"><a href="#Glossary"><span class="tocnumber">31</span> <span class="toctext">Glossary</span></a>
+<ul>
+<li class="toclevel-2 tocsection-60"><a href="#Definitions"><span class="tocnumber">31.1</span> <span class="toctext">Definitions</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<h2><span class="mw-headline" id="Device_Tree_Usage">Device Tree Usage</span></h2>
+<p>If Device Tree is new to you, start with <a href="/Device_Tree_Usage" title="Device Tree Usage"> Device Tree Usage page</a>.
+That page describes what Device Tree source looks like.  It walks through building the
+source for a new machine.  It describes the basic concepts, shows specific examples,
+and covers some advanced features.
+</p><p><a href="/Device_Tree_Usage" title="Device Tree Usage"> Device Tree Usage page</a> was previously located at devicetree.org.
+</p>
+<h2><span class="mw-headline" id="What_Is_Device_Tree">What Is Device Tree</span></h2>
+<p>The primary purpose of Device Tree in Linux is to provide a way to describe non-discoverable hardware. This information was previously hard coded in source code. 
+</p><p>Some more background on what Device Tree is, advantages, and competing solutions, see
+<a href="/Device_Tree_What_It_Is" title="Device Tree What It Is"> this page.</a>
+Most of the contents of this page was previously located at Device_Tree, which now
+redirects to Device_Tree_Reference.
+</p>
+<h2><span class="mw-headline" id="Request_for_Documentation_Suggestions">Request for Documentation Suggestions</span></h2>
+<p>If you have any comments or suggestions about the Device Tree documentation on elinux.org, please send them
+to frowand (dot) list (at) gmail (dot) com
+</p><p>I am currently trying to make the information more organized, more comprehensive, and a more
+complete index of information available elsewhere.  I am looking for comments on what is
+incorrect, incomplete, or missing.  I would appreciate pointers to good documentation,
+tutorials, etc that I can link to.
+</p>
+<h2><span class="mw-headline" id="History">History</span></h2>
+<ul><li><a href="/Device_tree_history" title="Device tree history"> How device tree got into Linux and how it has evolved</a></li></ul>
+<h2><span class="mw-headline" id="Future">Future</span></h2>
+<ul><li><a href="/Device_tree_future" title="Device tree future"> How device tree is changing and where it is headed</a>
+<ul><li>Includes Linux Plumbers conference, Kernel Summit, etc</li></ul></li>
+<li><a href="/Frank%27s_Evolving_Overlay_Thoughts" title="Frank&#39;s Evolving Overlay Thoughts"> Frank's thoughts on what is needed to complete basic overlay support</a></li></ul>
+<h2><span class="mw-headline" id="Device_Tree_Related_Communications">Device Tree Related Communications</span></h2>
+<h3><span class="mw-headline" id="Device-Tree_irc">Device-Tree irc</span></h3>
+<p>The Device Tree IRC channel is #devicetree on libera.chat.
+</p>
+<pre>default server name: irc.libera.chat
+
+A list of regional servers is available at:
+
+   <a rel="nofollow" class="external free" href="https://libera.chat/guides/connect">https://libera.chat/guides/connect</a>
+</pre>
+<p>You can also connect over the Matrix network with <a rel="nofollow" class="external text" href="https://matrix.to/#/#devicetree:libera.chat">#devicetree:libera.chat</a>
+</p><p>You are likely to find many people connected to the channel, but many
+of them are not actively monitoring traffic.  There <b>may be a delay of</b>
+several days or weeks<b> before a question or comment is acknowledged.</b>
+</p>
+<pre>You should register your nick (your username) so that it can not be
+hijacked by someone else.  Instructions for this can be found at
+
+   <a rel="nofollow" class="external free" href="https://libera.chat/guides/registration">https://libera.chat/guides/registration</a>
+</pre>
+<h3><span class="mw-headline" id="Device-tree_Mailing_List">Device-tree Mailing List</span></h3>
+<p>This list contained all devicetree related discussion until February 2014.
+At that time, the devicetree.spec and devicetree.compiler lists were
+created to provide lower volume lists for those specific topic areas.
+</p><p>Additional archive added in 2019:
+</p>
+<pre> <a rel="nofollow" class="external free" href="https://lore.kernel.org/linux-devicetree/">https://lore.kernel.org/linux-devicetree/</a>
+   (the git clone seems to have entries beginning July 29, 2008)
+   git clone --mirror <a rel="nofollow" class="external free" href="https://lore.kernel.org/linux-devicetree/0">https://lore.kernel.org/linux-devicetree/0</a> linux-devicetree/git/0.git
+   public inbox mirroring also available
+</pre>
+<p>After July 2013:
+</p>
+<pre> <a rel="nofollow" class="external free" href="http://vger.kernel.org/vger-lists.html#devicetree">http://vger.kernel.org/vger-lists.html#devicetree</a>
+ archive: <a rel="nofollow" class="external free" href="http://www.spinics.net/lists/devicetree/">http://www.spinics.net/lists/devicetree/</a>
+ archive: <a rel="nofollow" class="external free" href="http://dir.gmane.org/gmane.linux.drivers.devicetree">http://dir.gmane.org/gmane.linux.drivers.devicetree</a>
+</pre>
+<p>Up through July 2013:
+</p>
+<pre> <a rel="nofollow" class="external free" href="https://lists.ozlabs.org/listinfo/devicetree-discuss">https://lists.ozlabs.org/listinfo/devicetree-discuss</a>
+ archive: <a rel="nofollow" class="external free" href="https://lists.ozlabs.org/pipermail/devicetree-discuss/">https://lists.ozlabs.org/pipermail/devicetree-discuss/</a>
+ archive: <a rel="nofollow" class="external free" href="http://news.gmane.org/gmane.linux.drivers.devicetree">http://news.gmane.org/gmane.linux.drivers.devicetree</a>
+</pre>
+<h3><span id="Core_devicetree_binding_/_Devicetree_Specification_Mailing_List"></span><span class="mw-headline" id="Core_devicetree_binding_.2F_Devicetree_Specification_Mailing_List">Core devicetree binding / Devicetree Specification Mailing List</span></h3>
+<p>Created February 2014.
+</p><p>The devicetree.spec list is for "core" binding discussions; anything that
+affects entire subsystems or the kinds of things that would make sense
+to be added to the <s>ePAPR</s> Devicetree Specification.
+</p><p>Individual device bindings continue to be posted to
+devicetree@vger.kernel.org, but anything affecting subsystems or
+generic patterns should be posted to this list.
+</p><p>After April 28, 2016:
+</p><p>The creation and updating of the
+<a href="/Device_tree_future#Devicetree_Specification" title="Device tree future"> Devicetree Specification</a>
+is also discussed on this list.
+</p>
+<pre> <a rel="nofollow" class="external free" href="http://vger.kernel.org/vger-lists.html#devicetree-spec">http://vger.kernel.org/vger-lists.html#devicetree-spec</a>
+</pre>
+<pre> archive: <a rel="nofollow" class="external free" href="http://dir.gmane.org/gmane.comp.devicetree.spec">http://dir.gmane.org/gmane.comp.devicetree.spec</a>
+ archive: <a rel="nofollow" class="external free" href="https://www.spinics.net/lists/devicetree-spec/">https://www.spinics.net/lists/devicetree-spec/</a>
+</pre>
+<h3><span class="mw-headline" id="Device-tree_Compiler_and_Tools_Mailing_List">Device-tree Compiler and Tools Mailing List</span></h3>
+<p>Created February 2014.
+</p><p>The devicetree.compiler list is for discussion related to dtc and other tools.
+</p><p>It is specifically for discussing dt tooling topics
+(parsing, schema validation, data format, etc).
+</p>
+<pre> <a rel="nofollow" class="external free" href="http://vger.kernel.org/vger-lists.html#devicetree-compiler">http://vger.kernel.org/vger-lists.html#devicetree-compiler</a>
+</pre>
+<pre> archive: <a rel="nofollow" class="external free" href="https://www.spinics.net/lists/devicetree-compiler/">https://www.spinics.net/lists/devicetree-compiler/</a>
+</pre>
+<p><br />
+</p>
+<h2><span id="Presentations,_Papers,_and_Articles"></span><span class="mw-headline" id="Presentations.2C_Papers.2C_and_Articles">Presentations, Papers, and Articles</span></h2>
+<p>The
+<a href="/Device_Tree_presentations_papers_articles" title="Device Tree presentations papers articles"> Device Tree presentations, papers, and articles</a>
+page is organized by topic area and by date.
+</p>
+<h2><span class="mw-headline" id="Device_Tree_Mysteries">Device Tree Mysteries</span></h2>
+<p>If you can not find a specific piece of information elsewhere, it might be on the <a href="/Device_Tree_Mysteries" title="Device Tree Mysteries">Device_Tree_Mysteries</a> page.
+</p>
+<h2><span class="mw-headline" id="Linux_Specific">Linux Specific</span></h2>
+<p><a href="/Device_Tree_Linux" title="Device Tree Linux"> Device Tree Linux</a>
+</p>
+<h2><span class="mw-headline" id="Standards">Standards</span></h2>
+<p><a rel="nofollow" class="external text" href="https://www.devicetree.org/specifications/">Devicetree Specification Release 0.2</a>, located on the
+<a rel="nofollow" class="external text" href="https://www.devicetree.org/specifications/">devicetree.org web site</a>
+<b>has superseded the ePAPR for the Linux kernel</b>.  The specification is meant to be OS independent.
+The Linux kernel devicetree maintainers are actively involved in the specification process.
+</p><p>The Devicetree Specification <a href="/Device_tree_future#Devicetree_Specification" title="Device tree future"> will continue to be updated</a>.
+</p><p><a href="/images/a/a4/LoPAPR_DRAFT_v11_24March2016.pdf" class="internal" title="LoPAPR DRAFT v11 24March2016.pdf"> Open Power Foundation Linux on Power Architecture Platform Reference (LoPAPR), v1.1, 24 march 2016</a>
+<br />Source: <a rel="nofollow" class="external free" href="https://members.openpowerfoundation.org/document/dl/469">https://members.openpowerfoundation.org/document/dl/469</a>
+</p><p><a href="/images/c/cf/Power_ePAPR_APPROVED_v1.1.pdf" class="internal" title="Power ePAPR APPROVED v1.1.pdf"> Power.org Standard for Embedded Power Architecture Platform Requirements (ePAPR) v1.1</a>
+<br />Source: <a rel="nofollow" class="external free" href="https://www.power.org/documentation/power-org-standard-for-embedded-power-architecture-platform-requirements-epapr-v1-1-2/">https://www.power.org/documentation/power-org-standard-for-embedded-power-architecture-platform-requirements-epapr-v1-1-2/</a>
+</p>
+<h2><span class="mw-headline" id="Device_Tree_Source_Format">Device Tree Source Format</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="https://www.devicetree.org/specifications/">Devicetree Specification Release 0.2</a>
+<ul><li>chapter 2 "The Devicetree"</li>
+<li>chapter 6 "Devicetree Source Format (version 1)"</li></ul></li></ul>
+<ul><li><a href="/images/c/cf/Power_ePAPR_APPROVED_v1.1.pdf" class="internal" title="Power ePAPR APPROVED v1.1.pdf"> Power.org Standard for Embedded Power Architecture Platform Requirements (ePAPR) v1.1</a>
+<ul><li><b>superseded by the Devicetree Specification</b></li>
+<li>chapter 2 "The Device Tree"</li>
+<li>Appendix A "Device Tree Source Format (Version 1)"</li></ul></li></ul>
+<ul><li>dtc compiler repository documentation
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=utils/dtc/dtc.git;a=blob_plain;f=Documentation/dts-format.txt;hb=HEAD">Documentation/dts-format.txt</a> Device Tree Source Format</li></ul></li></ul>
+<ul><li><a href="/Device_Tree_Linux#Linux_vs_ePAPR_Version_1.1" title="Device Tree Linux"> differences between ePAPR and the Linux dtc compiler</a></li></ul>
+<ul><li>presentations
+<ul><li>"Device Tree for Dummies", ELC 2014 by Thomas Petazzoni
+<ul><li><a href="/images/f/f9/Petazzoni-device-tree-dummies_0.pdf" class="internal" title="Petazzoni-device-tree-dummies 0.pdf"> PDF</a></li>
+<li><a rel="nofollow" class="external text" href="https://www.youtube.com/watch?v=uzBwHFjJ0vU">YouTube video</a></li></ul></li></ul></li></ul>
+<ul><li>Undocumented
+<ul><li><a href="/Device_Tree_Source_Undocumented" title="Device Tree Source Undocumented">Device_Tree_Source_Undocumented</a> contains some information not documented elsewhere</li></ul></li></ul>
+<h2><span class="mw-headline" id="Bindings">Bindings</span></h2>
+<p>Bindings are documented in
+</p>
+<ul><li><a href="/Device_Tree_Reference#Standards" title="Device Tree Reference"> Standards documents</a></li>
+<li><a href="/Device_Tree_Reference#Kernel_Source_Documentation" title="Device Tree Reference"> Linux kernel source tree</a></li></ul>
+<h2><span class="mw-headline" id="Bindings_Documentation_in_Linux_Kernel_Source_Tree">Bindings Documentation in Linux Kernel Source Tree</span></h2>
+<p>Documentation files about device tree is available in the Linux kernel source at
+<a rel="nofollow" class="external text" href="https://git.kernel.org/?p=/linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree">Documentation/devicetree</a>
+</p><p>Specific bindings specifications are located in the Linux kernel source at:
+<a rel="nofollow" class="external text" href="https://git.kernel.org/?p=/linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings">Documentation/devicetree/bindings</a>
+</p><p><b></b>
+Before submitting a binding patch, read these:
+</p>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/ABI.txt;hb=HEAD">devicetree/bindings/ABI.txt</a>
+<ul><li>comments on stable binding and general bindings rules</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/writing-bindings.txt;hb=HEAD">devicetree/bindings/writing-bindings.txt</a>
+<ul><li>DOs and DON'Ts for designing and writing Devicetree bindings</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/submitting-patches.txt;hb=HEAD">devicetree/bindings/submitting-patches.txt</a>
+<ul><li>important details for <b>patch submitters</b> and <b>kernel maintainers</b></li></ul></li></ul>
+<p><b></b>
+Some especially useful files (in alphabetic order) are:
+</p>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/ABI/testing/sysfs-firmware-ofw;hb=HEAD">ABI/testing/sysfs-firmware-ofw</a>
+<ul><li>description of /sys/firmware/devicetree/* on the target system</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/;hb=HEAD">devicetree/bindings</a>
+<ul><li>the bindings directory has details about the syntax and expected elements for each device type representable in the dts and used by kernel frameworks and drivers</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/property-units.txt;hb=HEAD">devicetree/bindings/property-units.txt</a>
+<ul><li>how to name properties which have a unit of measure</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/resource-names.txt;hb=HEAD">devicetree/bindings/resource-names</a>
+<ul><li><b>*</b>-name properties containing an ordered list of names corresponding to another property'</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/vendor-prefixes.txt;hb=HEAD">devicetree/bindings/vendor-prefixes.txt</a>
+<ul><li>vendor prefix registry</li></ul></li></ul>
+<p>Some subsystems have overview bindings descriptions under devicetree/bindings/:
+</p>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/bus/mvebu-mbus.txt">bus/mvebu.bus</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/bus/simple-pm-bus.txt">bus/simple-pm-bus.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/clock/clock-bindings.txt">clock/clock-bindings.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/display/mipi-dsi-bus.txt">display/mipi-dsi-bus.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/dma/dma.txt">dma/dma.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/gpio/gpio.txt">gpio/gpio.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/hwlock/hwlock.txt">hwlock/hwlock.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/iio/iio-bindings.txt">iio/iio.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/interrupt-controller/interrupts.txt">interrupt-controller/interrupts.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/iommu/iommu.txt">iommu/iommu.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/lpddr2/lpddr2.txt">lpddr2/lpddr2.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/mailbox/mailbox.txt">mailbox/mailbox.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/memory-controllers/mvebu-devbus.txt">memory-controllers/mvebu-devbus.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/mfd/mfd.txt">mfd/mfd.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/mips/cavium/bootbus.txt">mips/cavium/bootbus.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/mmc/mmc.txt">mmc/mmc.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/pci/pci.txt">pci/pci.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/phy/phy-bindings.txt">phy/phy-bindings.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt">pinctrl/pinctrl-bindings.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/power_supply/power_supply.txt">power_supply/power_supply.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/pwm/pwm.txt">pwm/pwm.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/regmap/regmap.txt">regmap/regmap.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/regulator/regulator.txt">regulator/regulator.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt">reserved-memory/reserved-memory.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/reset/reset.txt">reset/reset.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/spi/spi-bus.txt">spi/spi-bus.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/spmi/spmi.txt">spmi/spmi.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/thermal/thermal.txt">thermal/thermal.txt</a></li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/bindings/xillybus/xillybus.txt">xillybus/xillybus.txt</a></li></ul>
+<h2><span class="mw-headline" id="Other_Documentation_in_Linux_Kernel_Source_Tree">Other Documentation in Linux Kernel Source Tree</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/booting-without-of.txt;hb=HEAD">devicetree/booting-without-of.txt</a>
+<ul><li>original powerpc document on booting without Open Firmware</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/changesets.txt;hb=HEAD">devicetree/changesets.txt</a>
+<ul><li>Description of changesets.  Apply changes such that full set of changes is applied successfully or none are.</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/dynamic-resolution-notes.txt;hb=HEAD">devicetree/dynamic-resolution-notes.txt</a>
+<ul><li>Implementation of resolver, used when applying overlays.</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/of_unittest.txt;hb=HEAD">devicetree/of_unittest.txt</a>
+<ul><li>How data for device tree unit tests is added to the kernel</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/overlay-notes.txt;hb=HEAD">devicetree/overlay-notes.txt</a>
+<ul><li>Kernel internal implementation notes on overlays</li></ul></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/usage-model.txt;hb=HEAD">devicetree/usage-model.txt</a>
+<ul><li>Overview of: Linux and the Device Tree</li></ul></li></ul>
+<h2><span class="mw-headline" id="Subsystem_specific">Subsystem specific</span></h2>
+<ul><li>gpio / pinctrl</li></ul>
+<ul><li>interrupts</li></ul>
+<ul><li>timers</li></ul>
+<ul><li>etc</li></ul>
+<h2><span class="mw-headline" id="Overlays">Overlays</span></h2>
+<h3><span class="mw-headline" id="Mainline_Linux_Support">Mainline Linux Support</span></h3>
+<p>Run time overlay apply and run time overlay remove from user space
+are not supported in the mainline kernel.  There are out of tree
+patches to implement this feature via an overlay manager.  The
+overlay manager is used successfully by many users for specific
+overlays on specific boards with specific environments and use cases.
+However, there are many issues with the Linux kernel overlay
+implementation due to incomplete and incorrect code.  The overlay
+manager has not been accepted in mainline due to these issues.  Once
+these issues are resolved, it is expected that some method of run time
+overlay apply and overlay removal from user space will be supported by
+the Linux kernel.
+</p><p>There is a possibility that overlay apply and overlay remove support
+could be phased in slowly, feature by feature, as specific  issues are
+resolved.
+</p>
+<ul><li><a href="/Frank%27s_Evolving_Overlay_Thoughts" title="Frank&#39;s Evolving Overlay Thoughts"> Frank's thoughts on what is needed to complete basic overlay support</a></li></ul>
+<h3><span class="mw-headline" id="Boot_Loader_Support">Boot Loader Support</span></h3>
+<p>An alternative to Linux kernel run time overlay apply is boot loader
+overlay apply.  For example, U-Boot supports overlay apply.  This
+method of overlay apply avoids the complications and issues of
+run time Linux kernel overlay apply.  This method is likely to
+be more robust and less problematic than run time Linux kernel
+overlay apply and is thus the recommended technique.
+</p>
+<h3><span class="mw-headline" id="Overlay_Source_Format">Overlay Source Format</span></h3>
+<p>In early overlay days, much of the overlay metadata was hand coded in
+the overlay source file.  The current dtc compiler in the Linux kernel
+source tree eliminates the need for this hand coding.  It is expected
+that the Linux kernel overlay apply code will at some time in the future
+refuse to apply an overlay compiled from source with hand coded metadata.
+The metadata includes fragment nodes and nodes with names beginning
+with an underscore, such as __overlay__, __fixup__, __local_fixup__,
+and __symbols__.
+</p><p>For examples of transforming overlay source from the hand coded
+metadata form, see slides 29 - 34 of the
+<a href="/images/0/03/Elce_2018_dt_bof.pdf" class="internal" title="Elce 2018 dt bof.pdf"> ELCE 2018 Devicetree BoF [PDF]</a>.
+</p>
+<h2><span class="mw-headline" id="Device_Tree_Source_Validation">Device Tree Source Validation</span></h2>
+<p>See device tree <a href="/Device_tree_future#Devicetree_Validation" title="Device tree future"> future validation work.</a>
+</p><p>The most basic validation is warnings from the dtc compiler.  Noisy checks
+are disabled by default.  Enable the noisy checks by specifying 'W=1' on
+the make command line.
+</p>
+<h2><span id="Compiling_source_into_.dtb_(FDT_binary_blob)"></span><span class="mw-headline" id="Compiling_source_into_.dtb_.28FDT_binary_blob.29">Compiling source into .dtb (FDT binary blob)</span></h2>
+<p><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=utils/dtc/dtc.git;a=blob_plain;f=Documentation/manual.txt;hb=HEAD">Documentation/manual.txt</a> Device Tree Compiler Manual
+</p>
+<h3><span class="mw-headline" id="via_Linux_kernel_make_system">via Linux kernel make system</span></h3>
+<h4><span class="mw-headline" id="All_configured_.dtb">All configured .dtb</span></h4>
+<pre>make dtbs
+</pre>
+<h4><span class="mw-headline" id="A_specific_.dtb">A specific .dtb</span></h4>
+<p>This is an example of compiling arch/arm/boot/dts/qcom-msm8960-cdp.dts
+</p><p>The make target is the name of the .dts file, with ".dts" changed to ".dtb".
+</p><p>Check that the config option that enables the dtb is set, for example:
+</p>
+<pre>arch/arm/boot/dts/Makefile:
+ 
+  dtb-$(CONFIG_ARCH_QCOM) += \
+         ...
+         qcom-msm8960-cdp.dtb \
+         ...
+
+$ grep CONFIG_ARCH_QCOM .config
+CONFIG_ARCH_QCOM=y
+</pre>
+<p>Either specify the correct architecture in the make command (or export the ARCH)
+</p>
+<pre>export ARCH="arm"
+make qcom-msm8960-cdp.dtb
+</pre>
+<pre>ARCH="arm" make qcom-msm8960-cdp.dtb
+</pre>
+<h3><span class="mw-headline" id="via_generated_script_in_build_directory">via generated script in build directory</span></h3>
+<p>After a .dtb has been built by the Linux kernel make system, files containing the precise build
+commands will remain in the build directory:
+</p>
+<ul><li>arch/arm/boot/dts/.*.dtb.cmd</li>
+<li>arch/${ARCH}/boot/dts/.*.dtb.cmd</li></ul>
+<h2><span class="mw-headline" id="FDT_format">FDT format</span></h2>
+<p>Other names for Flattened Device Tree (FDT) are "binary blob" and ".dtb".
+</p><p>The format of version 17 of the FDT is described in chapter 5, "Flat Devicetree Physical Structure"
+of the <a rel="nofollow" class="external text" href="https://www.devicetree.org/specifications/">Devicetree Specification Release 0.2</a>.
+</p><p>The format of version 17 of the FDT is described in chapter 8, "Flat Device Tree Physical Structure"
+of the <a href="/images/c/cf/Power_ePAPR_APPROVED_v1.1.pdf" class="internal" title="Power ePAPR APPROVED v1.1.pdf"> ePAPR v1.1</a> (<b>superseded by the Devicetree Specification</b>).
+</p><p>Section "II - The DT block format" of booting-without-of
+is a more expansive description of the format of FDT:
+</p>
+<pre><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/booting-without-of.txt;hb=v5.8">booting-without-of.rst</a> from Linux v5.8
+
+<a rel="nofollow" class="external text" href="https://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree/booting-without-of.rst;hb=v5.9">booting-without-of.rst</a> from Linux v5.9 (no longer present after v5.9)
+</pre>
+<h2><span class="mw-headline" id="Install">Install</span></h2>
+<ul><li>make dtbs_install
+<ul><li>installs in /boot/dtbs/&lt;kernel version&gt;</li></ul></li></ul>
+<ul><li>many other ways to install ....</li></ul>
+<h2><span class="mw-headline" id="Boot_loaders">Boot loaders</span></h2>
+<h2><span class="mw-headline" id="Booting">Booting</span></h2>
+<h2><span class="mw-headline" id="Debugging">Debugging</span></h2>
+<p>(Also see <a href="/Device_Tree_presentations_papers_articles#debug" title="Device Tree presentations papers articles">Device_Tree_presentations_papers_articles#debug</a>.)
+</p>
+<ul><li>tutorials
+<ul><li>"Solving Device Tree Issues" (updated), ELCE October 2015 by Frank Rowand
+<ul><li><a href="/images/0/04/Dt_debugging_elce_2015_151006_0421.pdf" class="internal" title="Dt debugging elce 2015 151006 0421.pdf"> PDF  slides</a></li>
+<li><a href="/Device_Tree_frowand" title="Device Tree frowand"> Supporting Resources (patches, etc)</a></li></ul></li></ul></li></ul>
+<ul><li>diffing .dts, .dtb, /proc/devicetree/
+<ul><li>scripts/dtc/dtx_diff
+<ul><li>in the Linux kernel source tree as of 4.6-rc1</li>
+<li>use cases, advantages, and things to be aware of are described in <a href="/images/0/04/Dt_debugging_elce_2015_151006_0421.pdf" class="internal" title="Dt debugging elce 2015 151006 0421.pdf"> "Solving Device Tree Issues"</a> (updated), ELCE October 2015 by Frank Rowand (PDF).  dtx_diff is referred to as "dtdiff" in this presentation.</li></ul></li></ul></li></ul>
+<ul><li>locating source file and line for nodes and properties
+<ul><li>scripts/dtc/dtx_diff --annotate
+<ul><li>in the Linux kernel source tree as of 5.0-rc1</li>
+<li>useful for 'dtx_diff DTx'</li>
+<li>not useful for 'dtx_diff DTx_1 DTx_2'</li></ul></li></ul></li></ul>
+<ul><li>boot time messages
+<ul><li>device creation</li>
+<li>driver registration</li>
+<li>binding driver to device</li>
+<li>deferred binding</li></ul></li></ul>
+<h2><span class="mw-headline" id="Debugging_-_random_hints">Debugging - random hints</span></h2>
+<p>You can set CONFIG_PROC_DEVICETREE to be able to see the device tree information in /proc after booting.
+Build the kernel with this option set to 'Y', boot the kernel, then 'cd /proc/device-tree'
+</p>
+<pre>/proc/device-tree still does not exist.  Now what???
+
+Is CONFIG_PROC_FS enabled?
+Is CONFIG_OF enabled?
+Does /sys/firmware/devicetree/base exist?  (Note that this path is <b>not</b> an ABI, but currently
+  /proc/devicetree is a soft link to this location.)
+Did the bootloader load a devicetree?  (Check the boot console or use dmesg to print the boot messages.)
+</pre>
+<p>For newer kernels where the CONFIG_PROC_DEVICETREE option does not exist, /proc/device-tree will be
+created if CONFIG_PROC_FS is set to 'Y'.
+</p><p>You might also try CONFIG_DEBUG_DRIVER=Y.
+</p><p>Also, often, you can set the line: "#define DEBUG 1" to an individual C file, to produce add debug statements
+to the routines in that file. This will activate any pr_debug() lines in the source for that file.
+</p><p>Alternatively, you can add the following to drivers/of/Makefile:
+</p>
+<pre>CFLAGS_base.o&#160;:= -DDEBUG
+CFLAGS_device.o&#160;:= -DDEBUG
+CFLAGS_platform.o&#160;:= -DDEBUG
+CFLAGS_fdt.o&#160;:= -DDEBUG
+</pre>
+<h2><span class="mw-headline" id="Tools_in_Linux_kernel_source_tree">Tools in Linux kernel source tree</span></h2>
+<h3><span id="dtc_(in_kernel)"></span><span class="mw-headline" id="dtc_.28in_kernel.29">dtc (in kernel)</span></h3>
+<p>dtc (Device Tree Compiler) - converts between the human editable device tree source "dts" format and the compact device tree blob "dtb" representation usable by the kernel or assembler source.  dtc is also a dtb decompiler.
+</p>
+<ul><li>The linux version of dtc is located in <tt>scripts/dtc/</tt> in the kernel source directory.  New versions are periodically pulled from the upstream project.
+<ul><li>dtc is built by the Linux kernel build process as a dependency when needed.  If you want to explicitly build it in the Linux kernel source tree, use the command: make scripts</li></ul></li>
+<li>Information about the upstream project is in a <a href="/Device_Tree_Reference#dtc_.28upstream_project.29" title="Device Tree Reference"> nearby section</a>.
+<ul><li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=utils/dtc/dtc.git;a=blob_plain;f=Documentation/manual.txt;hb=HEAD">Documentation/manual.txt</a> Device Tree Compiler Manual</li>
+<li><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=utils/dtc/dtc.git;a=blob_plain;f=Documentation/dts-format.txt;hb=HEAD">Documentation/dts-format.txt</a> Device Tree Source Format</li></ul></li>
+<li>The Maintainers are listed in the file <a rel="nofollow" class="external text" href="https://git.kernel.org/?p=utils/dtc/dtc.git;a=blob_plain;f=README;hb=HEAD">README</a></li></ul>
+<h3><span class="mw-headline" id="dtx_diff">dtx_diff</span></h3>
+<p>dtx_diff has two modes of operation:
+</p>
+<ul><li>compare two dtX files</li>
+<li>compile a single dtX file (using the normal Linux includes and .config) then decompiles that into a device tree source file.</li></ul>
+<p>A dtX file can be a device tree source file, a device tree compiled file (aka .dtb, FDT, or device tree blob), or a file system based subtree (either /proc/device-tree on the target system, or /proc/device-tree can be tarred on the target system and untarred on the system containing dtx_diff).
+</p><p>Examples of how to use dtx_diff can be found in
+<a href="/images/0/04/Dt_debugging_elce_2015_151006_0421.pdf" class="internal" title="Dt debugging elce 2015 151006 0421.pdf">  "Solving Device Tree Issues" (updated), ELCE October 2015, Frank Rowand </a>.  Note that dtx_diff was named 'dtdiff' in the presentation.
+</p><p>dtx_diff was merged in 4.6-rc1
+</p><p>--annotate was merged in 5.0-rc1
+</p>
+<h3><span class="mw-headline" id="dt_to_config">dt_to_config</span></h3>
+<p>dt_to_config is a tool to provide information about the Linux kernel configuration options needed by a given device tree.
+</p><p>dt_to_config can also report on whether the kernel configuration options are set correctly.
+</p><p>Examples of how to use dt_to_config and some limitations to be aware of can be found in <a href="/images/5/50/Dt_debugging_part_2.pdf" class="internal" title="Dt debugging part 2.pdf"> "Solving Device Tree Issues - part 2", LinuxCon Japan, July 2016, Frank Rowand </a>.
+</p><p>dt_to_config was merged in 4.8-rc1.
+</p>
+<h2><span class="mw-headline" id="Tools_external_to_Linux_kernel_source_tree">Tools external to Linux kernel source tree</span></h2>
+<h3><span id="dtc_(upstream_project)"></span><span class="mw-headline" id="dtc_.28upstream_project.29">dtc (upstream project)</span></h3>
+<p>The dtc (Device Tree Compiler) upstream project is periodically pulled into the Linux kernel source tree.
+The upstream project is maintained in
+</p>
+<ul><li><a rel="nofollow" class="external free" href="https://git.kernel.org/cgit/utils/dtc/dtc.git">https://git.kernel.org/cgit/utils/dtc/dtc.git</a></li>
+<li>git clone <a rel="nofollow" class="external free" href="git://git.kernel.org/pub/scm/utils/dtc/dtc.git">git://git.kernel.org/pub/scm/utils/dtc/dtc.git</a></li></ul>
+<p>Info on submitting patches is in section 1.1 of Documentation/manual.txt
+</p><p>How to build dtc, fdtdump, and other tools in the upstream project:
+</p>
+<ul><li>make</li></ul>
+<h3><span class="mw-headline" id="dts-mode">dts-mode</span></h3>
+<p>From the github README.mkd: a quick attempt at getting basic highlighting for Device Tree syntax in emacs.
+</p><p>From the announcement: Today I cobbled together a rudimentary devicetree major mode for
+emacs. At this point it's pretty much limited to rather basic syntax
+highlighting but works fairly well all things considered. It can be
+found on Github[1]. Patches are of course quite welcome.
+</p><p>Project location on [<a rel="nofollow" class="external text" href="https://github.com/bgamari/dts-mode">github</a>].
+</p><p>I am not an emacs user, so I would appreciate any feedback on how useful this tool is and additional
+information that could be added to this description (or if the tool is useless and should be
+removed from this page).  Email me at frowand (dot) list (at) gmail (dot) com
+</p>
+<h3><span class="mw-headline" id="EDK">EDK</span></h3>
+<ul><li>Xilinx EDK device-tree generator - Generates an FDT from Xilinx FPGA design files.
+<ul><li><a rel="nofollow" class="external free" href="http://xilinx.wikidot.com/device-tree-generator">http://xilinx.wikidot.com/device-tree-generator</a></li></ul></li></ul>
+<pre>"The device tree generator is a Xilinx EDK tool that plugs into the
+Automatic BSP Generation features of the tool, XPS"
+</pre>
+<h3><span class="mw-headline" id="fdtdump">fdtdump</span></h3>
+<p>fdtdump is a tool to convert an FDT (flattened device tree, aka device tree blob) to source.
+</p><p>The dtc compiler is an alternate tool that also has an option to convert an FDT to source
+(-O dts).
+</p><p>fdtdump differs in some ways from "dtc -O dts":
+</p>
+<ul><li>fdtdump prints the FDT header as a source comment.</li>
+<li>The format of data differs in appearance (number of hex digits printed) but both formats result in the same FDT when compiled.</li>
+<li>The --scan option of fdtdump will search through a file that embeds an FDT, attempting to find the FDT.  The embedded FDT will be converted to dts.</li></ul>
+<p>An unmaintained version of the source of fdtdump existed in the Linux kernel source tree.
+There is no makefile entry to build fdtdump in the Linux kernel source tree.  fdtdump
+was removed from the Linux kernel source tree in 5.11.
+</p><p>fdtdump is located in the <a href="/Device_Tree_Reference#dtc_.28upstream_project.29" title="Device Tree Reference"> dtc project</a> and
+can easily be built there.
+</p>
+<h3><span class="mw-headline" id="fdtoverlay">fdtoverlay</span></h3>
+<p>fdtoverlay is a tool created to test libfdt.  It applies one or more overlay .dtb files to a base .dtb file.
+It appears that some people are also using fdtoverlay to apply overlays pre-boot.
+</p><p>fdtoverlay is located in the <a href="/Device_Tree_Reference#dtc_.28upstream_project.29" title="Device Tree Reference"> dtc project</a> and
+can easily be built there.  It is queued up to be added to the Linux kernel source tree in
+Linux 5.11 or 5.12-rc1.
+</p>
+<h2><span class="mw-headline" id="Validation">Validation</span></h2>
+<h3><span class="mw-headline" id="in_kernel_documentation">in kernel documentation</span></h3>
+<p><a rel="nofollow" class="external text" href="https://git.kernel.org/?p=/linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/devicetree">Documentation/devicetree/writing-schema.rst</a>
+provides in kernel documentation:
+</p>
+<ul><li>Writing DeviceTree Bindings in json-schema
+<ul><li>how to write the binding schemas that devicetree source is validated against</li></ul></li>
+<li>Testing
+<ul><li>Dependencies
+<ul><li>how to install the validation tools</li></ul></li>
+<li>Running Checks
+<ul><li>how to run the validation tools</li></ul></li></ul></li></ul>
+<h3><span class="mw-headline" id="validation_tools_project">validation tools project</span></h3>
+<p>git clone  <a rel="nofollow" class="external free" href="git://github.com/devicetree-org/dt-schema.git">git://github.com/devicetree-org/dt-schema.git</a>
+<br />or<br />
+git clone <a rel="nofollow" class="external free" href="http://github.com/devicetree-org/dt-schema.git">http://github.com/devicetree-org/dt-schema.git</a>
+</p>
+<h3><span class="mw-headline" id="presentations">presentations</span></h3>
+<p><a href="/Device_Tree_presentations_papers_articles#validation" title="Device Tree presentations papers articles"> Presentations on validation</a>
+</p>
+<h2><span class="mw-headline" id="Testing">Testing</span></h2>
+<h3><span class="mw-headline" id="linux_kernel_framework">linux kernel framework</span></h3>
+<p><a href="/Device_Tree_unittest" title="Device Tree unittest">Device Tree unittest</a>
+</p>
+<h3><span class="mw-headline" id="dtc">dtc</span></h3>
+<p>The dtc tests are located in the upstream dtc project (see <a href="/Device_Tree_Reference#dtc_.28upstream_project.29" title="Device Tree Reference"> dtc (upstream project)</a>).
+</p>
+<pre>build dtc:
+   make dtc
+
+build tests:
+   make tests
+
+run tests:
+   make check
+
+run tests with valgrind --tool=memcheck:
+   make checkm
+
+run tests in verbose mode:
+   make checkv
+</pre>
+<p>Each test will report PASS or FAIL.
+</p><p>An example test result summary is:
+</p>
+<pre>********** TEST SUMMARY
+*     Total testcases:	1565
+*                PASS:	1565
+*                FAIL:	0
+*   Bad configuration:	0
+* Strange test result:	0
+**********
+</pre>
+<h2><span class="mw-headline" id="Other_projects_using_Device_Tree">Other projects using Device Tree</span></h2>
+<h3><span class="mw-headline" id="barebox">barebox</span></h3>
+<p>barebox bootloader
+</p><p>User manual: <a rel="nofollow" class="external text" href="https://www.barebox.org/doc/latest/user/devicetree.html">Devicetree support</a>
+</p>
+<h3><span class="mw-headline" id="BSD">BSD</span></h3>
+<p>BSD operating system
+</p><p><a rel="nofollow" class="external text" href="https://wiki.freebsd.org/FlattenedDeviceTree">FreeBSD FlattenedDeviceTree wiki</a>
+</p><p><a rel="nofollow" class="external text" href="http://wiki.freebsd.org/FreeBSDArmBoards">FreeBSDArmBoards wiki</a>
+</p>
+<h3><span class="mw-headline" id="U-Boot">U-Boot</span></h3>
+<p>U-Boot bootloader
+</p><p><a rel="nofollow" class="external free" href="http://www.denx.de/wiki/U-Boot/UBootFdtInfo">http://www.denx.de/wiki/U-Boot/UBootFdtInfo</a>
+</p><p><a rel="nofollow" class="external free" href="http://www.crashcourse.ca/wiki/index.php/U-Boot_and_device_trees">http://www.crashcourse.ca/wiki/index.php/U-Boot_and_device_trees</a>
+</p>
+<pre>Git repository effective 2021-02-28:
+
+git clone <a rel="nofollow" class="external free" href="https://source.denx.de/u-boot/u-boot.git">https://source.denx.de/u-boot/u-boot.git</a>
+
+(previous location: gitlab.denx.de)
+</pre>
+<h3><span class="mw-headline" id="Zephyr">Zephyr</span></h3>
+<p>Zephyr RTOS
+</p><p><a href="/Device_Tree_presentations_papers_articles#Zephyr" title="Device Tree presentations papers articles"> presentations on elinux.org</a>
+</p><p>Instead of loading a DTB and parsing it at run time, Zephyr generates source
+files from the devicetree .dts.  The resulting devicetree data file is compiled as part of the Zephyr build.
+</p>
+<h2><span class="mw-headline" id="Glossary">Glossary</span></h2>
+<ul><li>.dtb - File name suffix, by convention, for compiled devicetree.</li>
+<li>.dts - File name suffix, by convention, for devicetree source.</li>
+<li>.dtsi - File name suffix, by convention, for devicetree source to be included by a .dts or .dtsi file.</li>
+<li>Binary Blob - File containing a compiled devicetree.</li>
+<li>dtc - <a href="/Device_Tree_Reference#Tools" title="Device Tree Reference"> Devicetree compiler.</a></li>
+<li>EDT Expanded Device Tree - A copy of an FDT, but converted to kernel data structures, in the kernel memory space.</li>
+<li>FDT Flattened Device Tree - A copy of a binary blob in the kernel memory space.</li></ul>
+<h3><span class="mw-headline" id="Definitions">Definitions</span></h3>
+
+<!-- 
+NewPP limit report
+Cached time: 20211018050015
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.070 seconds
+Real time usage: 0.087 seconds
+Preprocessor visited node count: 281/1000000
+Preprocessor generated node count: 336/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 310/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+</div>
+<!-- Saved in parser cache with key elinux:pcache:idhash:101006-0!canonical and timestamp 20211018050015 and revision id 556281
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://elinux.org/index.php?title=Device_Tree_Reference&amp;oldid=556281">https://elinux.org/index.php?title=Device_Tree_Reference&amp;oldid=556281</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/Category:Device_tree" title="Category:Device tree">Device tree</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-login"><a href="/index.php?title=Special:UserLogin&amp;returnto=Device+Tree+Reference" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li><li id="pt-createaccount"><a href="/Special:RequestAccount" title="You are encouraged to create an account and log in; however, it is not mandatory">Request account</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+							<li id="ca-nstab-main" class="selected"><span><a href="/Device_Tree_Reference" title="View the content page [c]" accesskey="c">Page</a></span></li><li id="ca-talk"><span><a href="/Talk:Device_Tree_Reference" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>						</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+						<h3 id="p-variants-label">
+							<span>Variants</span>
+						</h3>
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+							<li id="ca-view" class="collapsible selected"><span><a href="/Device_Tree_Reference">Read</a></span></li><li id="ca-viewsource" class="collapsible"><span><a href="/index.php?title=Device_Tree_Reference&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span></li><li id="ca-history" class="collapsible"><span><a href="/index.php?title=Device_Tree_Reference&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>						</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+						<h3 id="p-cactions-label"><span>More</span></h3>
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+						<form action="/index.php" id="searchform">
+							<div id="simpleSearch">
+								<input type="search" name="search" placeholder="Search eLinux.org" title="Search eLinux.org [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-Navigation" aria-labelledby="p-Navigation-label">
+			<h3 id="p-Navigation-label">Navigation</h3>
+			<div class="body">
+								<ul>
+					<li id="n-mainpage"><a href="/Main_Page" title="Visit the main page [z]" accesskey="z">Main Page</a></li><li id="n-portal"><a href="/eLinux.org:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-currentevents"><a href="/eLinux.org:Current_events" title="Find background information on current events">Current events</a></li><li id="n-recentchanges"><a href="/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li><li id="n-Volunteering"><a href="/Sitesupport-url">Volunteering</a></li><li id="n-Bug-Tracker"><a href="http://bugs.elinux.org" rel="nofollow">Bug Tracker</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Where_else_to_find_us" aria-labelledby="p-Where_else_to_find_us-label">
+			<h3 id="p-Where_else_to_find_us-label">Where else to find us</h3>
+			<div class="body">
+								<ul>
+					<li id="n-Twitter-.28.40elinux.29"><a href="https://twitter.com/elinux" rel="nofollow">Twitter (@elinux)</a></li><li id="n-.23elinux-on-Libera.Chat"><a href="irc://#elinux@irc.libera.chat" rel="nofollow">#elinux on Libera.Chat</a></li><li id="n-Facebook-.28.40elinux.org.29"><a href="https://www.facebook.com/elinuxorg-750739005020534/" rel="nofollow">Facebook (@elinux.org)</a></li><li id="n-Mailing-Lists"><a href="http://www.elinux.org/ELinuxWiki:Mailing_List" rel="nofollow">Mailing Lists</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+			<div class="body">
+								<ul>
+					<li id="t-whatlinkshere"><a href="/Special:WhatLinksHere/Device_Tree_Reference" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/Special:RecentChangesLinked/Device_Tree_Reference" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="/index.php?title=Device_Tree_Reference&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="/index.php?title=Device_Tree_Reference&amp;oldid=556281" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/index.php?title=Device_Tree_Reference&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+				<div id="footer" role="contentinfo">
+						<ul id="footer-info">
+								<li id="footer-info-lastmod"> This page was last edited on 5 October 2021, at 20:47.</li>
+								<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="https://creativecommons.org/licenses/by-sa/3.0/">a Creative Commons Attribution-ShareAlike 3.0 Unported License</a> unless otherwise noted.</li>
+							</ul>
+						<ul id="footer-places">
+								<li id="footer-places-privacy"><a href="/eLinux.org:Privacy_policy" title="eLinux.org:Privacy policy">Privacy policy</a></li>
+								<li id="footer-places-about"><a href="/eLinux.org:About" title="eLinux.org:About">About eLinux.org</a></li>
+								<li id="footer-places-disclaimer"><a href="/eLinux.org:General_disclaimer" title="eLinux.org:General disclaimer">Disclaimers</a></li>
+							</ul>
+										<ul id="footer-icons" class="noprint">
+										<li id="footer-copyrightico">
+						<a href="https://creativecommons.org/licenses/by-sa/3.0/"><img src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="a Creative Commons Attribution-ShareAlike 3.0 Unported License" width="88" height="31"/></a>					</li>
+										<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>					</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.070","walltime":"0.087","ppvisitednodes":{"value":281,"limit":1000000},"ppgeneratednodes":{"value":336,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":310,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20211018050015","ttl":86400,"transientcontent":false}}});});</script><!-- No web analytics configured. -->
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":165});});</script>
+	</body>
+</html>
